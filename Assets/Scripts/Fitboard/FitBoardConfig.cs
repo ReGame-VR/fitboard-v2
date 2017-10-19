@@ -10,5 +10,12 @@ namespace ReGameVR.Fitboard {
         public static List<string> Keys2;
         public static List<string> Keys3;
         public static List<string> Keys4;
+
+        public static void resetFitboardConfig() {
+            Keys1 = new List<string>();
+            Keys2 = new List<string>();
+            Keys3 = new List<string>();
+            Keys4 = new List<string>();
+        }
     }
 }

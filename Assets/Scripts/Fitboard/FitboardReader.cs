@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using ReGameVR.Device;
 using ReGameVR.Fitboard;
 
-public class FitboardReader : ArduinoConnection, IOKeyInterface
+public class FitboardReader : MonoBehaviour, IOKeyInterface
 {
     public static GameObject instance;
 
-	protected override void AwakeProtocol () {
+    public SerialController serialController;
+
+    private void Awake () {
         if (instance) {
             Destroy(gameObject);
         } else {
@@ -16,21 +18,34 @@ public class FitboardReader : ArduinoConnection, IOKeyInterface
         }
 	}
 
-	protected override void StartProtocol () {
+    // Initialization
+    void Start() {
+        serialController = GameObject.Find("SerialController").GetComponent<SerialController>();
+        InitReadStorage();
+    }
+
+    // Executed each frame
+    void Update()
+    {
+        Message = serialController.ReadSerialMessage();
+
+        if (Message == null)
+            return;
+
+        // Check if the message is plain data or a connect/disconnect event.
+        if (ReferenceEquals(Message, SerialController.SERIAL_DEVICE_CONNECTED))
+            Debug.Log("Connection established");
+        else if (ReferenceEquals(Message, SerialController.SERIAL_DEVICE_DISCONNECTED))
+            Debug.Log("Connection attempt failed or disconnection detected");
+        else
+            Debug.Log("Message arrived: " + Message);
+    }
+
+    private void InitReadStorage () {
 		/* initializations */
-		rawRead = "";
+		message = "";
 		buttonStates = new Dictionary<string, ButtonState> ();
 		InitButtonStateDictionary ();
-	}
-
-	protected override void UpdateProtocol () {
-		/* update read */
-		RawRead = arduino.ReadLine ();
-	}
-
-	protected override void LateUpdateProtocol () { 
-		/* move previous read to 'lastRead' dictionary */
-		/* parse latest read into 'thisRead' dictionary */
 	}
 
 	public bool GetKeyDown (string keyName) {
@@ -55,8 +70,7 @@ public class FitboardReader : ArduinoConnection, IOKeyInterface
 	}
 
 	public bool GetAnyKeyPressed () {
-		/* TODO check that the keyName is valid! */
-		return (RawRead.Length > 9);
+		return (Message.Length > 9);
 	}
 
 	private void InitButtonStateDictionary () {
@@ -70,14 +84,14 @@ public class FitboardReader : ArduinoConnection, IOKeyInterface
 	}
 
 	/// <summary>
-	/// Gets the raw read.
+	/// Gets the last received message
 	/// </summary>
-	/// <value>The raw read.</value>
-	public string RawRead {
-		get { return rawRead; }
-		private set { rawRead = value;}
+	/// <value>The message.</value>
+	public string Message {
+		get { return message; }
+		private set { message = value;}
 	}
-	private string rawRead;
+	private string message;
 
 	private ButtonState button;
 	private bool anyKeyOn;

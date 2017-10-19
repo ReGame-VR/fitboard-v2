@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 namespace ReGameVR.Fitboard
 {
@@ -13,25 +14,23 @@ namespace ReGameVR.Fitboard
 		// Use this for initialization
 		void Start ()
 		{
-			Debug.Log("I'm alive!");
 			state = buttonStates.INACTIVE;
 			reader = this.transform.parent.gameObject.GetComponent<FitboardReader> ();
-		}
-
-		void OnDestroy ()
-		{
-			Debug.Log("I'm dead! Splechk");
 		}
 
 		void Update ()
 		{
 			if (!reader) {
-				Debug.Log ("FitboardReader is dead or invalid"); 
 				Destroy (this.gameObject);
 			} else {
-				if (reader.RawRead.Contains (this.gameObject.name)) {
-					IsActive = true;
-				}
+                try
+                {
+                    if (reader.Message.Contains("ARDUINO") && reader.Message.Contains(this.gameObject.name))
+                    {
+                        IsActive = true;
+                    }
+                    else { IsActive = false; }
+                } catch (System.NullReferenceException) { /* just drop it. It's having no effect and I don't know why it's popping up */ }
 			}
 		}
 		
@@ -55,8 +54,8 @@ namespace ReGameVR.Fitboard
 				default:
 					break;
 				}
-				IsActive = false;
-			} else {
+                //IsActive = false;
+            } else {
 				switch (State) {
 				case buttonStates.INACTIVE:
 					break;
@@ -88,7 +87,9 @@ namespace ReGameVR.Fitboard
 		/// <value><c>true</c> if this instance is active; otherwise, <c>false</c>.</value>
 		public bool IsActive {
 			private get {return isActive; }
-			set { isActive = value; }
+			set { isActive = value;
+                //Debug.Log( gameObject.name + " IsActive = " + isActive.ToString() ); 
+            }
 		}
 		private bool isActive;
 
@@ -124,7 +125,7 @@ namespace ReGameVR.Fitboard
 				if (state != value)
 				{ 
 					state = value;
-					Debug.Log ("Button " + gameObject.name + " state = " + state.ToString ());
+					Debug.Log (gameObject.name + " state = " + state.ToString ());
 				}
 			}
 			private get { return state; }
