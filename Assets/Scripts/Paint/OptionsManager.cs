@@ -1,46 +1,41 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using Paint;
 
-namespace Paint {
-    public class OptionsManager : MonoBehaviour {
+namespace ReGameVR {
+    namespace Games {
+        namespace Paint {
+            public class OptionsManager : MonoBehaviour {
 
-        // public Slider VolumeSlider;
-        public Slider DifficultySlider;
-        public LevelManager levelManager;
-        public Dropdown ColorDropdown;
-        public Image[] colors;
-        public Slider BoardSizeSlider;
+                public Slider SplashCountSlider;
+                public Slider MaxTimeSlider;
+                public Dropdown ColorDropdown;
+                public Image[] colors;
 
-        // private MusicManager musicManager;
+                // Use this for initialization
+                void Start() {
+                    MaxTimeSlider.value = PlayerPrefsManager.GetPaintTime();
+                    ColorDropdown.value = PlayerPrefsManager.GetPaintColorSetNumber();
+                    SplashCountSlider.value = PlayerPrefsManager.GetPaintBoardSize();
+                }
 
+                // Update is called once per frame
+                void Update() {
 
-        // Use this for initialization
-        void Start() {
-            // musicManager = GameObject.FindObjectOfType<MusicManager> ();
-            // VolumeSlider.value = PlayerPrefsManager.GetMasterVolume ();
-            DifficultySlider.value = PlayerPrefsManager.GetPaintTime();
-            ColorDropdown.value = PlayerPrefsManager.GetPaintColorSetNumber();
-            BoardSizeSlider.value = PlayerPrefsManager.GetPaintBoardSize();
-        }
+                    foreach (Image colorBorder in colors) {
+                        colorBorder.color = Color.grey;
+                    }
 
-        // Update is called once per frame
-        void Update() {
-            // musicManager.ChangeVolume (VolumeSlider.value);
+                    colors[ColorDropdown.value].color = Color.white;
 
-            foreach (Image colorBorder in colors) {
-                colorBorder.color = Color.grey;
+                }
+
+                public void Save() {
+                    PlayerPrefsManager.SetPaintColors(ColorDropdown.value);
+                    PlayerPrefsManager.SetPaintTime((int)MaxTimeSlider.value);
+                    PlayerPrefsManager.SetPaintBoardSize((int)SplashCountSlider.value);
+                }
             }
-
-            colors[ColorDropdown.value].color = Color.white;
-
-        }
-
-        public void Save() {
-            PlayerPrefsManager.SetPaintColors(ColorDropdown.value);
-            PlayerPrefsManager.SetPaintTime((int)DifficultySlider.value);
-            PlayerPrefsManager.SetPaintBoardSize((int)BoardSizeSlider.value);
         }
     }
 }

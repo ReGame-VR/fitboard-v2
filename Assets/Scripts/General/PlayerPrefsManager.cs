@@ -1,18 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
+using ReGameVR.Fitboard;
 
 // Manages game preferences
 public class PlayerPrefsManager : MonoBehaviour {
 
 	// Game Controls
-	private const string MasterVolumeKey = "MASTER_VOLUME";
+
+    // Paint
 	private const string PaintColorKey = "PAINT_COLOR_SET";
 	private const string PaintSizeKey = "PAINT_BOARD_SIZE";
     private const string PaintTimeKey = "PAINT_TIME";
+
+    // Move
+    private const string MoveTimeKey = "MOVE_TIME";
+    private const string MoveModeKey = "MOVE_GAME_MODE";
+    private const string MoveSpriteKey = "MOVE_SPRITE";
+
+    // Roll
+    private const string RollLevelKey = "ROLL_LEVEL";
+    private const string RollBallSpeedKey = "ROLL_BALL_SPEED";
+
+    // Mole
+    private const string MoleMaxMolesKey = "MOLE_MAX";
+    private const string MoleDespawnTimeKey = "MOLE_DESPAWN";
+    private const string MoleSpawnProbKey = "MOLE_SPAWN";
+    private const string MoleAnimSpeedKey = "MOLE_ANIM_SPEED";
+    private const string MoleTimeKey = "MOLE_TIME";
+
+    // General
+    private const string MasterVolumeKey = "MASTER_VOLUME";
     private const string UsersKey = "USER_INFO";
     private const string PatientsKey = "PATIENT_INFO";
-    private const string SpriteKey = "SPRITE";
-    private const string ModeKey = "GAME_MODE";
 	private const string UsbPortNameKey = "PORT_NAME";
 
     // Fitboard Component Configs
@@ -46,29 +65,6 @@ public class PlayerPrefsManager : MonoBehaviour {
 	public static float GetMasterVolume () {
 		return PlayerPrefs.GetFloat (MasterVolumeKey);
 	}
-
-	/// <summary>
-	/// Sets the difficulty. 
-	/// </summary>
-	/// <param name="difficulty">Difficulty. A float from 1 to 3.</param>
-	/* public static void SetDifficulty (float difficulty) {
-		if (difficulty >= 1f && difficulty <= 3f) {
-			PlayerPrefs.SetFloat (DifficultyKey, difficulty);
-			return;
-		}
-		Debug.LogError ("Difficulty out of range");
-	}
-    
-
-	/// <summary>
-	/// Gets the difficulty.
-	/// </summary>
-	/// <returns>The difficulty as float from 1 to 3.</returns>
-	public static float GetDifficulty () {
-		return PlayerPrefs.GetFloat (DifficultyKey);
-	}
-    */
-
     
     /// <summary>
     /// Sets the max Paint time.
@@ -91,7 +87,7 @@ public class PlayerPrefsManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// Sets the colors.
+    /// Sets the paint colors.
     /// </summary>
     /// <param name="number">Number. An int from 0 to 3.</param>
     public static void SetPaintColors(int number) {
@@ -103,7 +99,7 @@ public class PlayerPrefsManager : MonoBehaviour {
     }
 
 	/// <summary>
-	/// Gets the color set number.
+	/// Gets the paint color set number.
 	/// </summary>
 	/// <returns>The color set number as int from 0 to 3.</returns>
     public static int GetPaintColorSetNumber() {
@@ -111,7 +107,7 @@ public class PlayerPrefsManager : MonoBehaviour {
     }
 
 	/// <summary>
-	/// Sets the size of the board.
+	/// Sets the size of the paint board.
 	/// </summary>
 	/// <param name="size">Size. A positive int.</param>
     public static void SetPaintBoardSize(int size) {
@@ -123,18 +119,40 @@ public class PlayerPrefsManager : MonoBehaviour {
     }
 
 	/// <summary>
-	/// Gets the size of the board.
+	/// Gets the size of the paint board.
 	/// </summary>
 	/// <returns>The board size as positive int.</returns>
     public static int GetPaintBoardSize() {
         return PlayerPrefs.GetInt(PaintSizeKey);
     }
 
-	/// <summary>
-	/// Sets the fitboard head configuration.
-	/// </summary>
-	/// <param name="config">Config as index of config options in main UI.</param>
-	public static void SetFitboardHeadConfiguration (int config) {
+    /// <summary>
+    /// Sets the max Paint time.
+    /// </summary>
+    /// <param name="time"> Max time the Paint game can be played. An int from 0 to 120. </param>
+    public static void SetMoveTime(int time) {
+        if (time >= 0 && time <= 120) {
+            PlayerPrefs.SetInt(MoveTimeKey, time);
+            return;
+        }
+        Debug.LogError("Move time out of range");
+    }
+
+    /// <summary>
+    /// Gets the max Paint time.
+    /// </summary>
+    /// <returns>The max time the Paint game can be played as int from 0 to 120.</returns>
+    public static int GetMoveTime() {
+        return PlayerPrefs.GetInt(MoveTimeKey);
+    }
+
+
+
+    /// <summary>
+    /// Sets the fitboard head configuration.
+    /// </summary>
+    /// <param name="config">Config as index of config options in main UI.</param>
+    public static void SetFitboardHeadConfiguration (int config) {
 		if (config < 0 || config > 3)
 			return;
 		PlayerPrefs.SetInt (FitboardHeadConfigKey, config);
@@ -242,41 +260,125 @@ public class PlayerPrefsManager : MonoBehaviour {
         return PlayerPrefs.GetString(PatientsKey);
     }
 
-    public static void SetSpriteNum(int spriteNum) {
+    public static void SetMoveSpriteNum(int spriteNum) {
         if (spriteNum >= 0 && spriteNum <= 3) {
-            PlayerPrefs.SetInt(SpriteKey, spriteNum);
+            PlayerPrefs.SetInt(MoveSpriteKey, spriteNum);
         } else {
             Debug.LogError("Sprite number out of range");
         }
     }
 
-    public static int GetSpriteNumber() {
-        return PlayerPrefs.GetInt(SpriteKey);
+    public static int GetMoveSpriteNumber() {
+        return PlayerPrefs.GetInt(MoveSpriteKey);
     }
 
-    public static void SetGameMode(int mode) {
+    public static void SetMoveGameMode(int mode) {
         if (mode >= 0 && mode <= 3) {
-            PlayerPrefs.SetInt(ModeKey, mode);
+            PlayerPrefs.SetInt(MoveModeKey, mode);
         } else {
             Debug.LogError("Game mode number out of range");
         }
     }
 
-    public static int GetGameMode() {
-        return PlayerPrefs.GetInt(ModeKey);
+    public static int GetMoveGameMode() {
+        return PlayerPrefs.GetInt(MoveModeKey);
     }
 
-	public static void SetPortName (string portName) {
+    public static void SetRollLevel(int level) {
+        if (level >= 0 && level <= 3) {
+            PlayerPrefs.SetInt(RollLevelKey, level);
+        } else {
+            Debug.LogError("Roll level number out of range");
+        }
+    }
+
+    public static int GetRollLevel() {
+        return PlayerPrefs.GetInt(RollLevelKey);
+    }
+
+    public static void SetRollBallSpeed(float multiplier) {
+        if (multiplier >= 0 && multiplier <= 2) {
+            PlayerPrefs.SetFloat(RollBallSpeedKey, multiplier);
+        }
+    }
+
+    public static float GetRollBallSpeed() {
+        return PlayerPrefs.GetFloat(RollBallSpeedKey);
+    }
+
+    public static void SetMoleMaxCount(int count) {
+        if (count <= 5 && count >= 0) {
+            PlayerPrefs.SetInt(MoleMaxMolesKey, count);
+        } else {
+            Debug.LogError("Max mole count out of range");
+        }
+    }
+
+    public static int GetMoleMaxCount() {
+        return PlayerPrefs.GetInt(MoleMaxMolesKey);
+    }
+
+    public static void SetMoleTime(int time) {
+        if (time <= 120 && time >= 0) {
+            PlayerPrefs.SetInt(MoleTimeKey, time);
+        } else {
+            Debug.LogError("Mole time limit out of range");
+        }
+    }
+
+    public static int GetMoleTime() {
+        return PlayerPrefs.GetInt(MoleTimeKey);
+    }
+
+    public static void SetMoleDespawn(float time) {
+        if (time > 0) {
+            PlayerPrefs.SetFloat(MoleDespawnTimeKey, time);
+        } else {
+            Debug.LogError("Mole despawn time out of range");
+        }
+    }
+
+    public static float GetMoleDespawnTime() {
+        return PlayerPrefs.GetFloat(MoleDespawnTimeKey);
+    }
+
+    public static void SetMoleSpawnProb(float probability) {
+        if (probability < 1 && probability > 0) {
+            PlayerPrefs.SetFloat(MoleSpawnProbKey, probability);
+        } else {
+            Debug.LogError("Mole spawn probability out of range");
+        }
+    }
+
+    public static float GetMoleSpawnProb() {
+        return PlayerPrefs.GetFloat(MoleSpawnProbKey);
+    }
+
+    public static void SetMoleAnimSpeed(float speed) {
+        if (speed <= 3 && speed > 0) {
+            PlayerPrefs.SetFloat(MoleAnimSpeedKey, speed);
+        } else {
+            Debug.LogError("Mole animation speed out of range");
+        }
+    }
+
+    public static float GetMoleAnimSpeed() {
+        return PlayerPrefs.GetFloat(MoleAnimSpeedKey);
+    }
+
+
+
+
+    public static void SetPortName (string portName) {
 		PlayerPrefs.SetString (UsbPortNameKey, portName);
 	}
 
-	public static string GetLastPortName () {
-		try {
-			return PlayerPrefs.GetString (UsbPortNameKey);
-		} catch {
-			SetPortName (defaultPortName);
-			return PlayerPrefs.GetString (UsbPortNameKey);
-		}
-	}
-	private static string defaultPortName = "COM4";
+    public static string GetLastPortName() {
+        try {
+            return PlayerPrefs.GetString(UsbPortNameKey);
+        } catch {
+            SetPortName(Statics.defaultPortName);
+            return PlayerPrefs.GetString(UsbPortNameKey);
+        }
+    }
 }

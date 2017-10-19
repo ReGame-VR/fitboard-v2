@@ -6,29 +6,59 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Config Scene/Button Test.unity
-    guid: c4226497b4a09314a87712a165d47d11
+    path: Assets/_Login Scenes/Splash.unity
+    guid: e137d19f11160a948b5a19604ae4d7f6
   - enabled: 1
     path: Assets/_Login Scenes/Login.unity
     guid: 727d2a989b9b28543b85a28c9cf5339d
   - enabled: 1
-    path: Assets/_Login Scenes/Game Select.unity
-    guid: 2d3c7666655cbf64693ba9bee459e296
-  - enabled: 1
     path: Assets/_Login Scenes/Patient Selection.unity
     guid: 033ff352e84915242a00f75d774a1c87
   - enabled: 1
-    path: Assets/_Game Scenes/Splash.unity
-    guid: e137d19f11160a948b5a19604ae4d7f6
+    path: Assets/_Login Scenes/Game Select.unity
+    guid: 2d3c7666655cbf64693ba9bee459e296
   - enabled: 1
-    path: Assets/_Game Scenes/Paint/Paint Main.unity
-    guid: 5967ac7be03f508489fa178e2a7b68aa
-  - enabled: 1
-    path: Assets/_Game Scenes/Paint/Paint End.unity
-    guid: 4c6744fd64b28a845b555562d06cfd59
+    path: Assets/_Config Scene/Button Test.unity
+    guid: 3fe1bf1c758072843b19a1cc390b08b7
   - enabled: 1
     path: Assets/_Config Scene/Config Scene.unity
     guid: 3426afbb6298dcb47a6861b6dabcbb6b
   - enabled: 1
+    path: Assets/_Game Scenes/Paint/Paint Main.unity
+    guid: 5967ac7be03f508489fa178e2a7b68aa
+  - enabled: 1
     path: Assets/_Game Scenes/Paint/Paint Game.unity
     guid: f51509de6366ec54b8e6cacccc8fa737
+  - enabled: 1
+    path: Assets/_Game Scenes/Paint/Paint End.unity
+    guid: 4c6744fd64b28a845b555562d06cfd59
+  - enabled: 1
+    path: Assets/_Game Scenes/Roll/Roll Main.unity
+    guid: f834619ed894c4ebab2893ad648b6100
+  - enabled: 1
+    path: Assets/_Game Scenes/Roll/Roll Practice.unity
+    guid: e48e6883d42c746ff85698e5f338b6d7
+  - enabled: 1
+    path: Assets/_Game Scenes/Roll/Roll Easy.unity
+    guid: 45cf215fc212f493bb71a44f91b1a3f4
+  - enabled: 1
+    path: Assets/_Game Scenes/Roll/Roll Medium.unity
+    guid: 18410568fad2b4274aeb96bb6e628dc3
+  - enabled: 1
+    path: Assets/_Game Scenes/Roll/Roll Hard.unity
+    guid: 364a789c3a89e4229a3e1589ae92e3a3
+  - enabled: 1
+    path: Assets/_Game Scenes/Roll/Roll End.unity
+    guid: 692f0ff534e26db498e0da4c1b98b957
+  - enabled: 1
+    path: Assets/_Game Scenes/Memoree/Memoree.unity
+    guid: 8478c64ba002c4bc7bf397148323e86e
+  - enabled: 1
+    path: Assets/_Game Scenes/Mole/Mole Main.unity
+    guid: 58d760a2d335a8c44a4aab647c5cf0ba
+  - enabled: 1
+    path: Assets/_Game Scenes/Mole/Mole Game.unity
+    guid: d7aa70cf5f31c8e4d867cc8234872f27
+  - enabled: 1
+    path: Assets/_Game Scenes/Mole/Mole End.unity
+    guid: 633b110b35a630b4b9ceca79a6e77231

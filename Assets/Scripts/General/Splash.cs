@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Splash : MonoBehaviour {
-    // this is literally just for keeping track of what scene to load after the splash screen.
-    public static string sceneToLoad;
+namespace ReGameVR.Fitboard {
+    public class Splash : MonoBehaviour {
+        // Keeps track of what scene to load after the splash screen.
+        /// Obselete now, since the splash scene is no longer used for that purpose.
+        public static string sceneToLoad;
+    }
 }
