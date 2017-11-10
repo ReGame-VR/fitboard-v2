@@ -6,7 +6,7 @@ namespace ReGameVR {
     namespace Fitboard {
         public static class Statics {
 
-            public enum Game { None, Paint, Mole, Roll, Move, Memoree };
+            public enum Game { None, Paint, Mole, Roll, Move, Memoree, Car, Stop };
             public static Game currentGame;
             public static string prevScene;
             public static string nextScene;

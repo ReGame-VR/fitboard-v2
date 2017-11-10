@@ -16,10 +16,9 @@ namespace ReGameVR {
                 public bool gameHasStarted;
                 public AudioClip[] splatSounds;
                 public static int trialNumber;
+                public Color[] colors;
 
                 private GameTimer timer;
-                private Color[] colors;
-                private int colorSet;
                 private bool[][] colorBoard; // does the position have a splash on it already?
                 private GameObject splashParent;
                 private float boardUnit;
@@ -36,12 +35,10 @@ namespace ReGameVR {
 
                     InitializeFields();
 
-                    SetColors();
-
                     InitializeBoard();
 
                     // if the there have been any trials or the data file does not exist
-                    trialNumber = PrintData.GetTrialNumber();
+                    //trialNumber = PrintData.GetTrialNumber();
                 }
 
                 /// <summary>
@@ -50,7 +47,6 @@ namespace ReGameVR {
                 private void InitializeFields() {
                     gameHasStarted = false;
                     sfx = GetComponent<AudioSource>();
-                    colorSet = PlayerPrefsManager.GetPaintColorSetNumber();
                     timer = FindObjectOfType<GameTimer>();
                     splashParent = GameObject.Find("Splashes"); // Find the empty parent of the splashes called "Splashes"
                     if (!splashParent) {
@@ -59,40 +55,6 @@ namespace ReGameVR {
                     splashCount = 0;
                     zPos = -29.1f;
                     boardSize = PlayerPrefsManager.GetPaintBoardSize();
-                }
-
-                /// <summary>
-                /// Sets the colors being used based on the settings.
-                /// </summary>
-                private void SetColors() {
-                    colors = new Color[4];
-                    if (colorSet == 0) {
-                        SetColor(0, 255f, 218f, 233f);
-                        SetColor(1, 255f, 173f, 222f);
-                        SetColor(2, 255f, 176f, 253f);
-                        SetColor(3, 207f, 191f, 255f);
-                    } else if (colorSet == 1) {
-                        SetColor(0, 101f, 80f, 255f);
-                        SetColor(1, 122f, 194f, 255f);
-                        SetColor(2, 137f, 255f, 206f);
-                        SetColor(3, 124f, 250f, 255f);
-                    } else if (colorSet == 2) {
-                        SetColor(0, 255f, 40f, 40f);
-                        SetColor(1, 246f, 255f, 99f);
-                        SetColor(2, 53f, 53f, 255f);
-                        SetColor(3, 51f, 255f, 128f);
-                    } else if (colorSet == 3) {
-                        SetColor(0, 172f, 255f, 114f);
-                        SetColor(1, 150f, 255f, 220f);
-                        SetColor(2, 94f, 255f, 155f);
-                        SetColor(3, 197f, 255f, 202f);
-                    } else {
-                        Debug.LogError("No color set found");
-                    }
-                }
-
-                void SetColor(int num, float red, float green, float blue) {
-                    colors[num] = new Color(red / 255f, green / 255f, blue / 255f);
                 }
 
                 /// <summary>
@@ -128,7 +90,8 @@ namespace ReGameVR {
                         } while (colorBoard[posx][posy]);
 
                         Debug.Log(colorBoard[posx][posy]);
-                        if (fbHandler.GetKeysDown(1)) {
+                        if (Input.GetKeyDown(KeyCode.UpArrow)) {//fbHandler.GetKeysDown(1)) {
+                            Debug.Log("Help");
                             Splash(posx, posy, 0);
                         } else if (fbHandler.GetKeysDown(2)) {
                             Splash(posx, posy, 1);

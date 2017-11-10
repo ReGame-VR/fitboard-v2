@@ -8,7 +8,6 @@ public class PlayerPrefsManager : MonoBehaviour {
 	// Game Controls
 
     // Paint
-	private const string PaintColorKey = "PAINT_COLOR_SET";
 	private const string PaintSizeKey = "PAINT_BOARD_SIZE";
     private const string PaintTimeKey = "PAINT_TIME";
 
@@ -84,26 +83,6 @@ public class PlayerPrefsManager : MonoBehaviour {
     /// <returns>The max time the Paint game can be played as int from 0 to 120.</returns>
     public static int GetPaintTime() {
         return PlayerPrefs.GetInt(PaintTimeKey);
-    }
-
-    /// <summary>
-    /// Sets the paint colors.
-    /// </summary>
-    /// <param name="number">Number. An int from 0 to 3.</param>
-    public static void SetPaintColors(int number) {
-        if (number >= 0 && number <= 3) {
-            PlayerPrefs.SetInt(PaintColorKey, number);
-			return;
-        }
-		Debug.LogError("Color set number out of range");
-    }
-
-	/// <summary>
-	/// Gets the paint color set number.
-	/// </summary>
-	/// <returns>The color set number as int from 0 to 3.</returns>
-    public static int GetPaintColorSetNumber() {
-        return PlayerPrefs.GetInt(PaintColorKey);
     }
 
 	/// <summary>

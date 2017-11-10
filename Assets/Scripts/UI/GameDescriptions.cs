@@ -7,12 +7,19 @@ namespace ReGameVR.Fitboard {
     public class GameDescriptions : MonoBehaviour {
 
         public Statics.Game game;
+        public Sprite image;
 
         public void TriggerPopup() {
             string descrip = GetDescrip(game);
             string name = GetName(game);
             if (descrip != null && name != null) {
-                Popup.instance.DisplayPopup(name, descrip);
+                if (image == null) {
+                    Popup.instance.DisplayPopup(name, descrip);
+                } else {
+                    Popup.instance.DisplayPopup(name, descrip, image);
+                }
+            } else {
+                Notification.instance.LogError("Game description error", "No description or name found");
             }
         }
 
@@ -20,14 +27,25 @@ namespace ReGameVR.Fitboard {
             try {
                 switch (game) {
                     case Statics.Game.Paint:
-                        return "Each key corresponds to a different paint color. " +
-                            "The goal is to fill the scren with color, creating a different painting each time.";
+                        return "The goal of this game is to use each key to fill the screen with different colors before the timer runs out. " +
+                            "You can create a different painting each time. You can choose how long the timer runs.";
                     case Statics.Game.Mole:
-                        return "Use the keys to catch the mole that is popping its head out of the ground.";
+                        return "The goal of this game is to catch all the moles that pop up out of the ground by pressing the correct key " +
+                            "at the right time. You can decide how many moles pop up at once, how quickly they pop up, and how long " +
+                            "they stay up waiting to be caught.";
                     case Statics.Game.Memoree:
-                        return "Press the right keys to follow the sequence as it gets increasingly more complex.";
+                        return "The goal of this game is to repeat the sequence that is displayed on the screen. " +
+                            "Sequences will get longer as you get better at repeating them. " +
+                            "You can choose difficulty levels to start with and game play times.";
                     case Statics.Game.Roll:
-                        return "Move the ball through the course, catching the target objects and avoiding the obstacles.";
+                        return "The goal of this game is to use the keys to move the ball forward, backward, left or right to catch the targets " +
+                            "and avoid the obstacles.  Difficulty levels control the number of targets and obstacles.";
+                    case Statics.Game.Stop:
+                        return "The goal of this game is to press the right colored key to stop the balls before they leave the screen.";
+                    case Statics.Game.Car:
+                        return "The goal of this game is to drive the car through the course without hitting any obstacles. You can use the keys to go faster, slower or turn right or left. You can choose difficulty levels and minimum and maximum speeds.";
+                    case Statics.Game.Move:
+                        return "TODO: Make it move description.";
                     default:
                         throw new MissingReferenceException("Game not found. No game description for: " + game.ToString());
                 }
@@ -48,6 +66,12 @@ namespace ReGameVR.Fitboard {
                         return "Memoree";
                     case Statics.Game.Roll:
                         return "Roll the Ball";
+                    case Statics.Game.Stop:
+                        return "Stop the Ball";
+                    case Statics.Game.Car:
+                        return "Drive the Car";
+                    case Statics.Game.Move:
+                        return "Make it Move";
                     default:
                         throw new MissingReferenceException("Game not found. No name for: " + game.ToString());
                 }

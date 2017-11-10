@@ -28,6 +28,9 @@ namespace ReGameVR {
             private Color darkColor, lightColor, accentColor;
             [SerializeField]
             private RectTransform layout;
+            [SerializeField]
+            private Image image;
+            private LayoutElement imageLayout;
 #pragma warning restore 0649
 
             public static Popup instance;
@@ -39,6 +42,7 @@ namespace ReGameVR {
 
             private void Start() {
                 setColor(accentColor, darkColor, darkColor);
+                imageLayout = image.GetComponent<LayoutElement>();
             }
 
             private void Update() {
@@ -60,6 +64,24 @@ namespace ReGameVR {
             /// <param name="title"> The title of the popup. </param>
             /// <param name="message"> The body of the popup. </param>
             public void DisplayPopup(string title, string message) {
+                imageLayout.preferredHeight = 0;
+                setPopupText(title, message);
+            }
+
+            /// <summary>
+            /// Displays the popup with the given title, message, and image. Forces a layout rebuild on the popup.
+            /// </summary>
+            /// <param name="title"> The title of the popup. </param>
+            /// <param name="message"> The body of the popup. </param>
+            /// <param name="img"> The image accompanying the popup. </param>
+            public void DisplayPopup(string title, string message, Sprite img) {
+                imageLayout.preferredHeight = (imageLayout.preferredWidth * img.bounds.size.y) / img.bounds.size.x;
+                image.sprite = img;
+                setPopupText(title, message);
+            }
+
+            // Sets the text of the popup to the given text, opens the popup, rebuilds the layout.
+            private void setPopupText(string title, string message) {
                 titleText.text = title;
                 messageText.text = message;
                 anim.Play("open");
