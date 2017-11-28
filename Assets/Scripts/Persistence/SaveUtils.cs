@@ -43,7 +43,7 @@ namespace ReGameVR.Fitboard {
         }
 
         private static void SaveMove() {
-            SaveTrial("Paint",
+            SaveTrial("Make it Move",
                 new List<string>(
                     new string[4] {
                         "Game Mode",
@@ -59,7 +59,7 @@ namespace ReGameVR.Fitboard {
         }
 
         private static void SavePaint() {
-            SaveTrial("Paint",
+            SaveTrial("Paint th",
                 new List<string>(
                     new string[5] {
                         "Trial #",
@@ -77,7 +77,7 @@ namespace ReGameVR.Fitboard {
         }
 
         private static void SaveMole() {
-            SaveTrial("Mole",
+            SaveTrial("Whack-a-Mole",
                 new List<string>(
                     new string[6] { "Max Moles", "Spawn Rate", "Despawn Time (in milliseconds)", "Moles Hit", "Total Moles", "Total Time" }),
                 new List<int>(
@@ -97,7 +97,7 @@ namespace ReGameVR.Fitboard {
         }
 
         private static void SaveRoll() {
-            SaveTrial("Roll",
+            SaveTrial("Roll the Ball",
                 new List<string>(new string[4] { "Ball Speed", "Difficulty", "Score", "Time Taken (in seconds)" }),
                 new List<int>(
                     new int[4] {

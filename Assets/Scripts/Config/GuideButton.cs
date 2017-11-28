@@ -187,9 +187,11 @@ namespace ReGameVR {
                                     break;
                             }
                             break;
+                        case Statics.Game.Move:
+                            body = "In Make it Move, each key does something diffent based on the game mode.";
+                            break;
                         default:
-                            Notification.instance.LogError("Guide Button Error:", "No current game found. Could not display guide button popup.");
-                            return;
+                            return; // don't do anything
                     }
                 }
 

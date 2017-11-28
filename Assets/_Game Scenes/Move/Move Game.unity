@@ -390,7 +390,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -131162727
+  randomSeed: 1046724535
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3696,10 +3696,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4d97110c42d6d6048ba6c1971e68a70b, type: 3}
   scaleSpeed: 0.1
   sfx:
-  - {fileID: 8300000, guid: bf244f30b361b8747b3d3d45b200496b, type: 3}
-  - {fileID: 8300000, guid: 892cafd494dd8c449bfd88fed1cc72c5, type: 3}
-  - {fileID: 8300000, guid: 63255f5d3048d7c4487a392a8ac7ed35, type: 3}
-  - {fileID: 8300000, guid: d7a35814fdac1114c9a4f49c7ec32484, type: 3}
+  - {fileID: 8300000, guid: 26f5d2c3dcd06414390c3e33a0277353, type: 3}
+  - {fileID: 8300000, guid: 7d1a1ffec37ce2a48b5508243e48c719, type: 3}
+  - {fileID: 8300000, guid: 23a63434c9eb9974faf292658347c4ed, type: 3}
+  - {fileID: 8300000, guid: eb4dbc570e2a79545946b7d6c4f94302, type: 3}
   ps: {fileID: 148246757}
 --- !u!212 &174566427
 SpriteRenderer:

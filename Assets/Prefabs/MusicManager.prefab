@@ -151,3 +151,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3f3f1fce0ec46fc4887727065e2e1b47, type: 3}
   - {fileID: 8300000, guid: 255224d6983f98d46aef76ea897932c6, type: 3}
   - {fileID: 8300000, guid: b6e94e25e6fc6468b970ff6b568f19a0, type: 3}
+  move:
+  - {fileID: 8300000, guid: 2dba1e897ac9e7549897542b0da8be14, type: 3}
+  - {fileID: 8300000, guid: 5a5349b8c71fe0641bd80bc829cbe26a, type: 3}
+  - {fileID: 8300000, guid: 4930d2bb4f2abb04abca7807250dbbb0, type: 3}
