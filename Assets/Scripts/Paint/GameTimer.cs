@@ -44,7 +44,7 @@ namespace ReGameVR {
 
                 // Update is called once per frame
                 void Update() {
-                    slider.value = Mathf.Clamp(1 - ((Time.timeSinceLevelLoad - 3) / levelSeconds), 0f, 1f);
+                    slider.value = Mathf.Clamp((Time.timeSinceLevelLoad - 3) / levelSeconds, 0f, 1f);
                     // Debug.Log(Time.timeSinceLevelLoad);
                     // Debug.Log("slider: " + slider.value);
                     if (Time.timeSinceLevelLoad - 3f >= levelSeconds && !isEndOfLevel) {

@@ -38,6 +38,7 @@ public class PlayerPrefsManager : MonoBehaviour {
 	private const string FitboardTopConfigKey = "FB_TOP_CONFIG";
 	private const string FitboardBottomConfigKey = "FB_BOTTOM_CONFIG";
 	private const string FitboardFootConfigKey = "FB_FOOT_CONFIG";
+   
 
 	// Fitboard Key Assignments
 	// string AssignedKeys =
@@ -124,6 +125,7 @@ public class PlayerPrefsManager : MonoBehaviour {
     public static int GetMoveTime() {
         return PlayerPrefs.GetInt(MoveTimeKey);
     }
+
 
 
 
@@ -344,9 +346,6 @@ public class PlayerPrefsManager : MonoBehaviour {
     public static float GetMoleAnimSpeed() {
         return PlayerPrefs.GetFloat(MoleAnimSpeedKey);
     }
-
-
-
 
     public static void SetPortName (string portName) {
 		PlayerPrefs.SetString (UsbPortNameKey, portName);

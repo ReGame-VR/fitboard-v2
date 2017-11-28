@@ -23,6 +23,7 @@ namespace ReGameVR {
             // Config
             private const string buttonTest = "Button Test";
             private const string config = "Config Scene";
+            private const string pastScores = "Game Data";
 
             // Games
             private const string paintMenu = "Paint Main";
@@ -46,7 +47,6 @@ namespace ReGameVR {
 
             // SAVE DATA
             private static readonly string path = Application.dataPath + "/";
-
 
 
             public static string Path {
@@ -181,6 +181,12 @@ namespace ReGameVR {
             public static int Version {
                 get {
                     return version;
+                }
+            }
+
+            public static string PastScores {
+                get {
+                    return pastScores;
                 }
             }
         }
