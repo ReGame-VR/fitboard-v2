@@ -32,3 +32,8 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# ReGame Save Files
+*.rgs
+
+*.collabignore

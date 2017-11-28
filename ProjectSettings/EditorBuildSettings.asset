@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/_Login Scenes/Game Select.unity
     guid: 2d3c7666655cbf64693ba9bee459e296
   - enabled: 1
+    path: Assets/_Config Scene/Game Data.unity
+    guid: f00e281ccdfd24343bc708089815906d
+  - enabled: 1
     path: Assets/_Config Scene/Button Test.unity
     guid: 3fe1bf1c758072843b19a1cc390b08b7
   - enabled: 1
@@ -62,3 +65,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Game Scenes/Mole/Mole End.unity
     guid: 633b110b35a630b4b9ceca79a6e77231
+  - enabled: 1
+    path: Assets/_Game Scenes/Move/Move End.unity
+    guid: fce2d7dd63d19bf4ba8928d3c3654306
+  - enabled: 1
+    path: Assets/_Game Scenes/Move/Move Game.unity
+    guid: 3f08e636910046747b16d62fc43a185a
+  - enabled: 1
+    path: Assets/_Game Scenes/Move/Move Main.unity
+    guid: 298a5d269b2c60d41946b0dd7e8354d9
+  - enabled: 1
+    path: Assets/_Game Scenes/Move/Move Settings.unity
+    guid: 6e9b473171c0d04409b6ec466f6a445f

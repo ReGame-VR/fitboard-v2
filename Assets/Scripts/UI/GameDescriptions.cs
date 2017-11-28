@@ -45,7 +45,9 @@ namespace ReGameVR.Fitboard {
                     case Statics.Game.Car:
                         return "The goal of this game is to drive the car through the course without hitting any obstacles. You can use the keys to go faster, slower or turn right or left. You can choose difficulty levels and minimum and maximum speeds.";
                     case Statics.Game.Move:
-                        return "TODO: Make it move description.";
+                        return "This game has 4 mini-games, in which the goal is to touch any assigned key to make an object move or to make a sound." +
+                            " There is no specific role for each key, so it is best to assign a colour to each of your selected keys. You can play" +
+                            " the game with 1 to 4 keys.";
                     default:
                         throw new MissingReferenceException("Game not found. No game description for: " + game.ToString());
                 }

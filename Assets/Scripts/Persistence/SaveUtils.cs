@@ -35,24 +35,41 @@ namespace ReGameVR.Fitboard {
                     case Statics.Game.Roll:
                         SaveRoll();
                         break;
+                    case Statics.Game.Move:
+                        SaveMove();
+                        break;
                 }
             }
+        }
+
+        private static void SaveMove() {
+            SaveTrial("Paint",
+                new List<string>(
+                    new string[4] {
+                        "Game Mode",
+                        "Total Time",
+                        "Total Key Presses",
+                        "Sprite Number"}),
+                new List<int>(
+                    new int[4] {
+                        PlayerPrefsManager.GetMoveGameMode(),
+                        PlayerPrefsManager.GetMoveTime(),
+                        Games.Move.ImageController.keyPresses,
+                        PlayerPrefsManager.GetMoveSpriteNumber()}));
         }
 
         private static void SavePaint() {
             SaveTrial("Paint",
                 new List<string>(
-                    new string[6] {
+                    new string[5] {
                         "Trial #",
-                        "Patient ID",
                         "Total Duration",
                         "Time Taken",
                         "Splashes",
                         "Max Splashes" }),
                 new List<int>(
-                    new int[6] {
+                    new int[5] {
                         Painter.trialNumber,
-                        GetPatientID(),
                         (int)GameTimer.levelSeconds,
                         (int)GameTimer.timeTaken,
                         Painter.splashCount,
@@ -105,10 +122,6 @@ namespace ReGameVR.Fitboard {
             results.TimeStamp = DateTime.Now;
 
             Statics.Session.GameResults.Add(results);
-        }
-
-        private static int GetPatientID() {
-            return Mathf.Abs(Statics.CurrentPatient.Name.GetHashCode());
         }
 
         private static int GetTrialNum() {

@@ -61,6 +61,11 @@ public class LevelManager : MonoBehaviour {
         LoadLevel(Statics.Login);
     }
 
+    public void LoadPastScores() {
+        Statics.currentGame = Statics.Game.None;
+        LoadLevel(Statics.PastScores);
+    }
+
     /// <summary>
     /// Load the Login scene.
     /// </summary>
