@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: cf286ceb5a99601408a48b4ba4b06043
+timeCreated: 1509585562
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Atomic Age
+  fontNames:
+  - Atomic Age
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

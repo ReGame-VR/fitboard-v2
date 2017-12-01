@@ -27,6 +27,13 @@ public class PlayerPrefsManager : MonoBehaviour {
     private const string MoleAnimSpeedKey = "MOLE_ANIM_SPEED";
     private const string MoleTimeKey = "MOLE_TIME";
 
+    // Car
+    private const string CAR_DIFFICULTY = "car difficulty";
+    private const string CAR_MIN_SPEED = "car min speed";
+    private const string CAR_MAX_SPEED = "car max speed";
+    private const string CAR_LANE_CHANGE_SPEED = "car lane change speed";
+    private const string CAR_SFX_VOLUME = "car sfx volume"; // includes the 'ready set go' and collision sound
+
     // General
     private const string MasterVolumeKey = "MASTER_VOLUME";
     private const string UsersKey = "USER_INFO";
@@ -345,6 +352,106 @@ public class PlayerPrefsManager : MonoBehaviour {
 
     public static float GetMoleAnimSpeed() {
         return PlayerPrefs.GetFloat(MoleAnimSpeedKey);
+    }
+
+    /*
+		Sets Car minimum speed for Car Game, currently allows range 0.1 -> 0.5
+	*/
+    public static void SetCarMinSpeed(float speed) {
+        if (speed <= 0.5f && speed >= 0.1f) {
+            PlayerPrefs.SetFloat(CAR_MIN_SPEED, speed);
+        } else {
+            Debug.Log("Invalid min car speed");
+        }
+    }
+
+    /*
+		Gets Car Min Speed from player prefs
+	*/
+    public static float GetCarMinSpeed() {
+        return PlayerPrefs.GetFloat(CAR_MIN_SPEED);
+    }
+
+    /*
+		Sets car max speed for car game. Current allowed range is 0.75 -> 0.1
+	*/
+    public static void SetCarMaxSpeed(float speed) {
+        if (speed <= 1.0f && speed >= 0.75f) {
+            PlayerPrefs.SetFloat(CAR_MAX_SPEED, speed);
+        } else {
+            Debug.Log("Invalid max car speed");
+        }
+    }
+
+    /*
+		Gets car max speed from car game
+	*/
+    public static float GetCarMaxSpeed() {
+        return PlayerPrefs.GetFloat(CAR_MAX_SPEED);
+    }
+
+    /*
+		Sets Lane Change Speed for car game. Current range is 0.002 -> 0.008
+
+		NOTE: This speed is backwards (it used invoke repeating), so lower values
+		mean the car will change lanes faster. higher values mean slower.
+	*/
+    public static void SetCarLaneChangeSpeed(float speed) {
+        if (speed <= 0.008 && speed >= 0.002) {
+            PlayerPrefs.SetFloat(CAR_LANE_CHANGE_SPEED, speed);
+        } else {
+            Debug.Log("Invalid lane change speed");
+        }
+    }
+
+    /*
+		Gets Lane Change Speed from car game
+	*/
+    public static float GetCarLaneChangeSpeed() {
+        return PlayerPrefs.GetFloat(CAR_LANE_CHANGE_SPEED);
+    }
+
+
+    /*
+		Sets difficulty for car game. Either 0, 1 or 2.
+		0 -> Easy
+		1 -> Medium
+		2 -> Hard
+
+		Note: Based on this value, the car is spawned on the appropriate track.
+	*/
+    public static void setCarDifficulty(float value) {
+        int val = (int)value;
+        if (val == 0 || val == 1 || val == 2) {
+            PlayerPrefs.SetInt(CAR_DIFFICULTY, val);
+        } else {
+            Debug.Log("bad level value");
+        }
+    }
+
+    /*
+		Get's difficulty for car game.
+	*/
+    public static int getCarDifficulty() {
+        return PlayerPrefs.GetInt(CAR_DIFFICULTY);
+    }
+
+    /*
+		Sets sfx volume for car game. Current range is 0 -> 0.5
+		SFX for car game includes the 'ready set go' sound upon start of game
+		as well as collision noise.	
+	*/
+    public static void setSFXVolume(float volume) {
+        if (volume >= 0 && volume <= 0.51) {
+            PlayerPrefs.SetFloat(CAR_SFX_VOLUME, volume);
+        }
+    }
+
+    /*
+		Get's sfx volume for collision game.
+	*/
+    public static float getSFXVolume() {
+        return PlayerPrefs.GetFloat(CAR_SFX_VOLUME);
     }
 
     public static void SetPortName (string portName) {

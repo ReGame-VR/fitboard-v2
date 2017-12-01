@@ -26,7 +26,8 @@ namespace ReGameVR.Fitboard {
 
             string fileName = destinationPath +
                 "/" +
-                session.Patient.Name +
+                session.Therapist.Name + "-" +
+                session.Patient.Name + "-" +
                 timeStamp +
                 REGAME_SAVE_EXTENSION;
 

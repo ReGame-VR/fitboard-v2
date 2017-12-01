@@ -6,6 +6,7 @@ using ReGameVR.Games.Roll;
 using ReGameVR.Games.Paint;
 using ReGameVR.Games.Memoree;
 using ReGameVR.Games.Mole;
+using ReGameVR.Games.Car;
 
 /// <summary>
 /// Handles saving for each game.
@@ -37,6 +38,9 @@ namespace ReGameVR.Fitboard {
                         break;
                     case Statics.Game.Move:
                         SaveMove();
+                        break;
+                    case Statics.Game.Car:
+                        SaveCar();
                         break;
                 }
             }
@@ -79,12 +83,12 @@ namespace ReGameVR.Fitboard {
         private static void SaveMole() {
             SaveTrial("Whack-a-Mole",
                 new List<string>(
-                    new string[6] { "Max Moles", "Spawn Rate", "Despawn Time (in milliseconds)", "Moles Hit", "Total Moles", "Total Time" }),
+                    new string[6] { "Max Moles", "Spawn Rate", "Despawn Time", "Moles Hit", "Total Moles", "Total Time" }),
                 new List<int>(
                     new int[6] {
                         MoleSpawner.MaxMoles,
                         (int)(MoleSpawner.SpawnProb * 100),
-                        (int)(MoleSpawner.UpDuration*1000),
+                        (int)(MoleSpawner.UpDuration),
                         MoleSpawner.MolesHit,
                         MoleSpawner.TotalMoles,
                         (int)MoleTimer.levelSeconds }));
@@ -98,13 +102,20 @@ namespace ReGameVR.Fitboard {
 
         private static void SaveRoll() {
             SaveTrial("Roll the Ball",
-                new List<string>(new string[4] { "Ball Speed", "Difficulty", "Score", "Time Taken (in seconds)" }),
+                new List<string>(new string[4] { "Ball Speed", "Difficulty", "Score", "Time Taken" }),
                 new List<int>(
                     new int[4] {
                         (int)(PlayerController.ballSpeed * PlayerController.defaultSpeed),
                         PlayerPrefsManager.GetRollLevel(),
                         PlayerController.count,
                         (int)Stopwatch.time}));
+        }
+
+        private static void SaveCar() {
+            SaveTrial("Drive the Car",
+                new List<string>(new string[4] { "Difficulty", "Score", "Time Taken", "# of Collisions" }),
+                new List<int>(new int[4] { PlayerPrefsManager.getCarDifficulty(), SetFinalScore.theFinalScore,
+                    SetFinalScore.theTime, SetFinalScore.numberOfCollisions }));
         }
 
         /// <summary>
