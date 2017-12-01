@@ -102,6 +102,7 @@ namespace ReGameVR {
                         end = true;
                         SaveUtils.SaveTrial();
                         deactivateEnemies();
+						countText.text = "Score: " + count.ToString() + " GOOD JOB!";
                     }
                 }
             }

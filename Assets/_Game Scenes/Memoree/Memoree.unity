@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -144,7 +144,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 749.15, y: -43}
+  m_AnchoredPosition: {x: 749.15, y: -229}
   m_SizeDelta: {x: 0, y: 88.63}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7686467
@@ -317,6 +317,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 5, y: 5}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -387,6 +401,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -615,6 +643,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 5, y: 5}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -1179,6 +1221,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 5, y: 5}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -1652,9 +1708,8 @@ GameObject:
   - component: {fileID: 896992472}
   - component: {fileID: 896992471}
   - component: {fileID: 896992470}
-  - component: {fileID: 896992469}
   m_Layer: 0
-  m_Name: Blue Cube
+  m_Name: Red Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1673,17 +1728,6 @@ Transform:
   m_Father: {fileID: 2045888838}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 45, y: 45, z: 45}
---- !u!114 &896992469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 896992467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d12416e5849b4f34bb20f7b2659349d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &896992470
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1697,7 +1741,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 502a3e1f0b71a475884725f60fbd2e76, type: 2}
+  - {fileID: 2100000, guid: 77142dd0758ff4d60b9430666ed48599, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2118,9 +2162,8 @@ GameObject:
   - component: {fileID: 1111180853}
   - component: {fileID: 1111180852}
   - component: {fileID: 1111180851}
-  - component: {fileID: 1111180850}
   m_Layer: 0
-  m_Name: Green Cube
+  m_Name: Yellow Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2139,17 +2182,6 @@ Transform:
   m_Father: {fileID: 2045888838}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 45, y: 45, z: 45}
---- !u!114 &1111180850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1111180848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d12416e5849b4f34bb20f7b2659349d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &1111180851
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2163,7 +2195,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 17a7058e717854a7fa991eb2cf5a59c5, type: 2}
+  - {fileID: 2100000, guid: 96a0831e4346c4a56be058e5540fbb52, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2292,7 +2324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1167160240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2496,7 +2528,7 @@ MonoBehaviour:
   oriLight: {fileID: 33705747}
   endLight: {fileID: 1444899198}
   Minutes: {fileID: 1295614324}
-  scoreText: {fileID: 2091499754}
+  feedbackText: {fileID: 2091499754}
   correct: {fileID: 1232824919}
   wrong: {fileID: 877218089}
 --- !u!23 &1205642012
@@ -3277,9 +3309,8 @@ GameObject:
   - component: {fileID: 1389486515}
   - component: {fileID: 1389486514}
   - component: {fileID: 1389486513}
-  - component: {fileID: 1389486512}
   m_Layer: 0
-  m_Name: Yellow Cube
+  m_Name: Green Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3298,17 +3329,6 @@ Transform:
   m_Father: {fileID: 2045888838}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 45, y: 45, z: 45}
---- !u!114 &1389486512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1389486510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d12416e5849b4f34bb20f7b2659349d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &1389486513
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3322,7 +3342,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 96a0831e4346c4a56be058e5540fbb52, type: 2}
+  - {fileID: 2100000, guid: 17a7058e717854a7fa991eb2cf5a59c5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3550,6 +3570,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -3704,6 +3738,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 5, y: 5}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -3963,9 +4011,8 @@ GameObject:
   - component: {fileID: 1891061967}
   - component: {fileID: 1891061966}
   - component: {fileID: 1891061965}
-  - component: {fileID: 1891061964}
   m_Layer: 0
-  m_Name: Red Cube
+  m_Name: Blue Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3984,17 +4031,6 @@ Transform:
   m_Father: {fileID: 2045888838}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 45, y: 45, z: 45}
---- !u!114 &1891061964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1891061962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d12416e5849b4f34bb20f7b2659349d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &1891061965
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4008,7 +4044,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 77142dd0758ff4d60b9430666ed48599, type: 2}
+  - {fileID: 2100000, guid: 502a3e1f0b71a475884725f60fbd2e76, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4495,7 +4531,7 @@ GameObject:
   - component: {fileID: 2091499755}
   - component: {fileID: 2091499754}
   m_Layer: 5
-  m_Name: ScoreText
+  m_Name: FeedbackText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

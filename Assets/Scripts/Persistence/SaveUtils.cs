@@ -6,7 +6,6 @@ using ReGameVR.Games.Roll;
 using ReGameVR.Games.Paint;
 using ReGameVR.Games.Memoree;
 using ReGameVR.Games.Mole;
-using ReGameVR.Games.Car;
 
 /// <summary>
 /// Handles saving for each game.
@@ -36,44 +35,24 @@ namespace ReGameVR.Fitboard {
                     case Statics.Game.Roll:
                         SaveRoll();
                         break;
-                    case Statics.Game.Move:
-                        SaveMove();
-                        break;
-                    case Statics.Game.Car:
-                        SaveCar();
-                        break;
                 }
             }
         }
 
-        private static void SaveMove() {
-            SaveTrial("Make it Move",
-                new List<string>(
-                    new string[4] {
-                        "Game Mode",
-                        "Total Time",
-                        "Total Key Presses",
-                        "Sprite Number"}),
-                new List<int>(
-                    new int[4] {
-                        PlayerPrefsManager.GetMoveGameMode(),
-                        PlayerPrefsManager.GetMoveTime(),
-                        Games.Move.ImageController.keyPresses,
-                        PlayerPrefsManager.GetMoveSpriteNumber()}));
-        }
-
         private static void SavePaint() {
-            SaveTrial("Paint th",
+            SaveTrial("Paint",
                 new List<string>(
-                    new string[5] {
+                    new string[6] {
                         "Trial #",
+                        "Patient ID",
                         "Total Duration",
                         "Time Taken",
                         "Splashes",
                         "Max Splashes" }),
                 new List<int>(
-                    new int[5] {
+                    new int[6] {
                         Painter.trialNumber,
+                        GetPatientID(),
                         (int)GameTimer.levelSeconds,
                         (int)GameTimer.timeTaken,
                         Painter.splashCount,
@@ -81,14 +60,14 @@ namespace ReGameVR.Fitboard {
         }
 
         private static void SaveMole() {
-            SaveTrial("Whack-a-Mole",
+            SaveTrial("Mole",
                 new List<string>(
-                    new string[6] { "Max Moles", "Spawn Rate", "Despawn Time", "Moles Hit", "Total Moles", "Total Time" }),
+                    new string[6] { "Max Moles", "Spawn Rate", "Despawn Time (in milliseconds)", "Moles Hit", "Total Moles", "Total Time" }),
                 new List<int>(
                     new int[6] {
                         MoleSpawner.MaxMoles,
                         (int)(MoleSpawner.SpawnProb * 100),
-                        (int)(MoleSpawner.UpDuration),
+                        (int)(MoleSpawner.UpDuration*1000),
                         MoleSpawner.MolesHit,
                         MoleSpawner.TotalMoles,
                         (int)MoleTimer.levelSeconds }));
@@ -101,21 +80,14 @@ namespace ReGameVR.Fitboard {
         }
 
         private static void SaveRoll() {
-            SaveTrial("Roll the Ball",
-                new List<string>(new string[4] { "Ball Speed", "Difficulty", "Score", "Time Taken" }),
+            SaveTrial("Roll",
+                new List<string>(new string[4] { "Ball Speed", "Difficulty", "Score", "Time Taken (in seconds)" }),
                 new List<int>(
                     new int[4] {
                         (int)(PlayerController.ballSpeed * PlayerController.defaultSpeed),
                         PlayerPrefsManager.GetRollLevel(),
                         PlayerController.count,
                         (int)Stopwatch.time}));
-        }
-
-        private static void SaveCar() {
-            SaveTrial("Drive the Car",
-                new List<string>(new string[4] { "Difficulty", "Score", "Time Taken", "# of Collisions" }),
-                new List<int>(new int[4] { PlayerPrefsManager.getCarDifficulty(), SetFinalScore.theFinalScore,
-                    SetFinalScore.theTime, SetFinalScore.numberOfCollisions }));
         }
 
         /// <summary>
@@ -133,6 +105,10 @@ namespace ReGameVR.Fitboard {
             results.TimeStamp = DateTime.Now;
 
             Statics.Session.GameResults.Add(results);
+        }
+
+        private static int GetPatientID() {
+            return Mathf.Abs(Statics.CurrentPatient.Name.GetHashCode());
         }
 
         private static int GetTrialNum() {

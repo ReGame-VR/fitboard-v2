@@ -6,7 +6,7 @@ namespace ReGameVR {
     namespace Fitboard {
         public static class Statics {
 
-            public enum Game { None, Paint, Mole, Roll, Move, Memoree, Car, Stop };
+            public enum Game { None, Paint, Mole, Roll, Move, Memoree };
             public static Game currentGame;
             public static string prevScene;
             public static string nextScene;
@@ -23,7 +23,6 @@ namespace ReGameVR {
             // Config
             private const string buttonTest = "Button Test";
             private const string config = "Config Scene";
-            private const string pastScores = "Game Data";
 
             // Games
             private const string paintMenu = "Paint Main";
@@ -46,7 +45,8 @@ namespace ReGameVR {
             private const int version = 2;
 
             // SAVE DATA
-            private static readonly string path = Application.persistentDataPath + "/";
+            private static readonly string path = Application.dataPath + "/";
+
 
 
             public static string Path {
@@ -181,12 +181,6 @@ namespace ReGameVR {
             public static int Version {
                 get {
                     return version;
-                }
-            }
-
-            public static string PastScores {
-                get {
-                    return pastScores;
                 }
             }
         }

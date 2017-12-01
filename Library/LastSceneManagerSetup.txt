@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/_Game Scenes/Roll/Roll Easy.unity
+  isLoaded: 1
+  isActive: 1
