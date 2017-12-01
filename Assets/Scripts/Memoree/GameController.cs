@@ -14,7 +14,7 @@ namespace ReGameVR.Games.Memoree {
 
         // Texts
         public Dropdown Minutes;
-        public Text scoreText;
+		public Text feedbackText;
 
         // Music
         public AudioSource correct, wrong;
@@ -30,6 +30,8 @@ namespace ReGameVR.Games.Memoree {
         int[] sequence;
         public static int difficulty;
         int[] answer;
+		int longestStreak;
+		int currentStreak;
         
 
         // Doubles
@@ -52,7 +54,7 @@ namespace ReGameVR.Games.Memoree {
             fbHandler = FindObjectOfType<FitBoardHandler>();
             gameplayCanvas.SetActive(false);
             endLight.SetActive(false);
-            scoreText.text = "";
+			feedbackText.text = "";
 
             minLimit = 2;
             secLimit = 0;
@@ -66,6 +68,8 @@ namespace ReGameVR.Games.Memoree {
             level = 0;
             answerCount = 0;
             points = 0;
+			longestStreak = 0;
+			currentStreak = 0;
 
             blue.SetActive(false);
             red.SetActive(false);
@@ -90,7 +94,7 @@ namespace ReGameVR.Games.Memoree {
                     endLight.SetActive(true);
                     oriLight.SetActive(false);
                     endLight.GetComponent<Animation>().Play();
-                    scoreText.text = "Score: " + points;
+					feedbackText.text = "Score: " + points + "\nLongest streak: " + longestStreak;
                     SaveUtils.SaveTrial();
                 }
 
@@ -99,6 +103,12 @@ namespace ReGameVR.Games.Memoree {
                     if (sameArray(answer, sequence)) {
                         Debug.Log(true);
                         correct.Play();
+			
+						currentStreak = currentStreak + 1;
+
+						if (currentStreak > longestStreak) {
+							longestStreak = currentStreak;
+						}
 
                         if (points + 1 == level) {
                             points += 1;
@@ -113,11 +123,17 @@ namespace ReGameVR.Games.Memoree {
                         wrong.Play();
                         answerCount = 0;
 
+						currentStreak = 0;
+
+						Invoke ("feedbackWrong", (float)0);
                         Invoke("glowCubes", (float)1);
                     } else {
                         Debug.Log(false);
                         wrong.Play();
 
+						currentStreak = 0;
+
+						Invoke ("feedbackWrong", (float)0);
                         updateSequence(false);
                         Invoke("glowCubes", (float)1);
                     }
@@ -197,6 +213,21 @@ namespace ReGameVR.Games.Memoree {
                 answerCount = 0;
             }
         }
+
+		// ------------------ Produce feedback based on success or failure ---------------
+		void feedbackWrong() {
+			StartCoroutine (showfeedBack ("Try again!"));
+		}
+
+		void feedbackCorrect() {
+			StartCoroutine (showfeedBack ("Good job!"));
+		}
+
+		IEnumerator showfeedBack(string message) {
+			feedbackText.text = message;
+			yield return new WaitForSecondsRealtime((float)2);
+			feedbackText.text = "";
+		}
 
 
         // -------------------	Glows the cubes in the sequence	---------------------------

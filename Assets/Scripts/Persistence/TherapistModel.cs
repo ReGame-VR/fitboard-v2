@@ -11,7 +11,7 @@ namespace ReGameVR.Fitboard {
         }
 
         public bool Equals(TherapistModel other) {
-            return this.Name.Equals(other.Name);
+            return this.Name == other.Name;
         }
     }
 }

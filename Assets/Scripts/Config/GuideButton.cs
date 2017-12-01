@@ -14,108 +14,10 @@ namespace ReGameVR {
 
             private string body;
             private Button btn;
-            private Text text;
 
             void Start() {
                 btn = GetComponent<Button>();
-                text = GetComponentInChildren<Text>();
                 btn.onClick.AddListener(TaskOnClick);
-                text.text = GetName();
-            }
-
-            public string GetName() {
-                if (keyType == 0) {
-                    return "None";
-                } else {
-                    switch (Statics.currentGame) {
-                        case Statics.Game.Paint:
-                            switch (keyType) {
-                                case 1:
-                                    return "Red";
-                                case 2:
-                                    return "Blue";
-                                case 3:
-                                    return "Green";
-                                case 4:
-                                    return "Yellow";
-                            }
-                            break;
-                        case Statics.Game.Mole:
-                            switch (keyType) {
-                                case 1:
-                                    return "Top";
-                                case 2:
-                                    return "Bottom";
-                                case 3:
-                                    return "Right";
-                                case 4:
-                                    return "Left";
-                            }
-                            break;
-                        case Statics.Game.Memoree:
-                            switch (keyType) {
-                                case 1:
-                                    return "Red";
-                                case 2:
-                                    return "Blue";
-                                case 3:
-                                    return "Green";
-                                case 4:
-                                    return "Yellow";
-                            }
-                            break;
-                        case Statics.Game.Stop:
-                            switch (keyType) {
-                                case 1:
-                                    return "Red";
-                                case 2:
-                                    return "Blue";
-                                case 3:
-                                    return "Green";
-                                case 4:
-                                    return "Yellow";
-                            }
-                            break;
-                        case Statics.Game.Roll:
-                            switch (keyType) {
-                                case 1:
-                                    return "Forward";
-                                case 2:
-                                    return "Back";
-                                case 3:
-                                    return "Right";
-                                case 4:
-                                    return "Left";
-                            }
-                            break;
-                        case Statics.Game.Car:
-                            switch (keyType) {
-                                case 1:
-                                    return "Faster";
-                                case 2:
-                                    return "Slower";
-                                case 3:
-                                    return "Right";
-                                case 4:
-                                    return "Left";
-                            }
-                            break;
-                        default:
-                            Notification.instance.LogError("Guide Error:", "No current game found. Could not display proper guide button names.");
-                            switch (keyType) {
-                                case 1:
-                                    return "Key 1";
-                                case 2:
-                                    return "Key 2";
-                                case 3:
-                                    return "Key 3";
-                                case 4:
-                                    return "Key 4";
-                            }
-                            return "ERROR";
-                    }
-                    return "ERROR";
-                }
             }
 
             void TaskOnClick() {
@@ -124,78 +26,63 @@ namespace ReGameVR {
                 } else {
                     switch (Statics.currentGame) {
                         case Statics.Game.Paint:
-                            switch (keyType) {
-                                case 1:
-                                    body = "In Paint a Picture, this key paints a red splatter.";
-                                    break;
-                                case 2:
-                                    body = "In Paint a Picture, this key paints a blue splatter.";
-                                    break;
-                                case 3:
-                                    body = "In Paint a Picture, this key paints a green splatter.";
-                                    break;
-                                case 4:
-                                    body = "In Paint a Picture, this key paints a yellow splatter.";
-                                    break;
-                            }
+                            body = "In Paint a Picture, each key type triggers a different color paint slash on the board in a random location.";
                             break;
                         case Statics.Game.Mole:
                             switch (keyType) {
                                 case 1:
-                                    body = "In Whack-a-Mole, this key whacks the top hole.";
+                                    body = "In Whack-a-Mole, keys assigned to key type 1 whack the top hole.";
                                     break;
                                 case 2:
-                                    body = "In Whack-a-Mole, this key whacks the bottom hole.";
+                                    body = "In Whack-a-Mole, keys assigned to key type 2 whack the bottom hole.";
                                     break;
                                 case 3:
-                                    body = "In Whack-a-Mole, this key whacks the right hole.";
+                                    body = "In Whack-a-Mole, keys assigned to key type 3 whack the right hole.";
                                     break;
                                 case 4:
-                                    body = "In Whack-a-Mole, this key whacks the left hole.";
+                                    body = "In Whack-a-Mole, keys assigned to key type 4 whack the left hole.";
                                     break;
                             }
                             break;
                         case Statics.Game.Memoree: 
                             switch (keyType) {
                                 case 1:
-                                    body = "In Memoree, this key triggers the red cube.";
+                                    body = "In Memoree, keys assigned to key type 1 trigger the red cube.";
                                     break;
                                 case 2:
-                                    body = "In Memoree, this key triggers the blue cube.";
+                                    body = "In Memoree, keys assigned to key type 2 trigger the blue cube.";
                                     break;
                                 case 3:
-                                    body = "In Memoree, this key triggers the green cube.";
+                                    body = "In Memoree, keys assigned to key type 3 trigger the green cube.";
                                     break;
                                 case 4:
-                                    body = "In Memoree, this key triggers the yellow cube.";
+                                    body = "In Memoree, keys assigned to key type 4 trigger the yellow cube.";
                                     break;
                             }
                             break;
                         case Statics.Game.Roll:
                             switch (keyType) {
                                 case 1:
-                                    body = "In Roll the Ball, this key moves the player ball forward";
+                                    body = "In Roll the Ball, keys assigned to key type 1 move the player ball forward";
                                     break;
                                 case 2:
-                                    body = "In Roll the Ball, this key moves the player ball backwards.";
+                                    body = "In Roll the Ball, keys assigned to key type 2 move the player ball backwards.";
                                     break;
                                 case 3:
-                                    body = "In Roll the Ball, this key moves the player ball to the right.";
+                                    body = "In Roll the Ball, keys assigned to key type 3 move the player ball to the right.";
                                     break;
                                 case 4:
-                                    body = "In Roll the Ball, this key moves the player ball to the left.";
+                                    body = "In Roll the Ball, keys assigned to key type 4 move the player ball to the left.";
                                     break;
                             }
                             break;
-                        case Statics.Game.Move:
-                            body = "In Make it Move, each key does something diffent based on the game mode.";
-                            break;
                         default:
-                            return; // don't do anything
+                            Notification.instance.LogError("Guide Button Error:", "No current game found. Could not display guide button popup.");
+                            return;
                     }
                 }
 
-                Popup.instance.DisplayPopup(Statics.currentGame.ToString() + ": " + GetName(), body);
+                Popup.instance.DisplayPopup(Statics.currentGame.ToString() + ": Key " + keyType, body);
             }
         }
     }
