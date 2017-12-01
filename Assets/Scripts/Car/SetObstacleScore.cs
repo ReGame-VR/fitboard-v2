@@ -17,10 +17,5 @@ namespace ReGameVR.Games.Car {
             score = scoreKeeper.scoreVal;
             obstacleScore.text = score.ToString();
         }
-
-        // Update is called once per frame
-        void Update() {
-
-        }
     }
 }

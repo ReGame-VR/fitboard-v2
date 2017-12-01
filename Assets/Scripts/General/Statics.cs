@@ -46,7 +46,7 @@ namespace ReGameVR {
             private const int version = 2;
 
             // SAVE DATA
-            private static readonly string path = Application.dataPath + "/";
+            private static readonly string path = Application.persistentDataPath + "/";
 
 
             public static string Path {
