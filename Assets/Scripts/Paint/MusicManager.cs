@@ -11,7 +11,7 @@ namespace ReGameVR {
             public static bool isPlaying;
 
             [SerializeField]
-            private AudioClip[] paint, mole, main, memoree, roll, move;
+            private AudioClip[] paint, mole, main, memoree, roll, move, car;
 
             void Awake() {
                 if (instance != null) {
@@ -112,6 +112,15 @@ namespace ReGameVR {
             private void playMove() {
                 audioSource.clip = move[Random.Range(0, move.Length)];
                 audioSource.volume = .07f;
+                PlayMusic();
+            }
+
+            public void PlayCarMusic() {
+                instance.playCar();
+            }
+
+            private void playCar() {
+                audioSource.clip = car[Random.Range(0, car.Length)];
                 PlayMusic();
             }
         }

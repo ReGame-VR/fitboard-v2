@@ -34,11 +34,18 @@ public class PlayerPrefsManager : MonoBehaviour {
     private const string CAR_LANE_CHANGE_SPEED = "car lane change speed";
     private const string CAR_SFX_VOLUME = "car sfx volume"; // includes the 'ready set go' and collision sound
 
+    // Ball
+    private const string BALL_POP_DIFFICULTY = "ball popper difficulty";
+    private const string BALL_POP_TIME_LIMIT = "ball popper time limit";
+    private const string BALL_POP_VOLUME = "ball popper volume"; // not implemented
+    private const string BALL_POP_SFX_VOLUME = "ball popper sfx volume";
+
     // General
     private const string MasterVolumeKey = "MASTER_VOLUME";
     private const string UsersKey = "USER_INFO";
     private const string PatientsKey = "PATIENT_INFO";
 	private const string UsbPortNameKey = "PORT_NAME";
+
 
     // Fitboard Component Configs
     private const string FitboardHeadConfigKey = "FB_HEAD_CONFIG";
@@ -465,5 +472,72 @@ public class PlayerPrefsManager : MonoBehaviour {
             SetPortName(Statics.defaultPortName);
             return PlayerPrefs.GetString(UsbPortNameKey);
         }
+    }
+
+    /*
+    Sets Ball Popper Difficulty. 0 = Easy, 1 = Medium, 2 = Hard.
+*/
+    public static void SetBallPopperDifficulty(int diff) {
+        if (diff != 0 && diff != 1 && diff != 2) {
+            Debug.Log("players prefs manager cannot set Ball Popper level to " + diff);
+        } else {
+            PlayerPrefs.SetInt(BALL_POP_DIFFICULTY, diff);
+        }
+    }
+
+    /*
+		Gets Ball Popper Difficulty
+	*/
+    public static int GetBallPopperDifficulty() {
+        return PlayerPrefs.GetInt(BALL_POP_DIFFICULTY);
+    }
+
+    /*
+		Sets Ball Popper time Limit. 0 = 30 seconds, 1 = 60 seconds, 2 = 90 seconds.
+	*/
+    public static void SetBallPopperTimeLimit(int time) {
+        if (time != 0 && time != 1 && time != 2) {
+            Debug.Log("players prefs manager cannot set Ball Popper time to " + time);
+        } else {
+            PlayerPrefs.SetInt(BALL_POP_TIME_LIMIT, time);
+        }
+    }
+
+    /*
+		Gets Ball Popper time limit. 0 means 30 seconds, 1 means 60 seconds, 2 means 90 seconds
+	*/
+    public static int GetBallPopperTimeLimit() {
+        return PlayerPrefs.GetInt(BALL_POP_TIME_LIMIT);
+    }
+
+    /*
+		#############################
+		TODO: Sets Ball Popper Volume
+		#############################
+	*/
+    public static void SetBallPopperVolume(float vol) {
+        PlayerPrefs.SetFloat(BALL_POP_VOLUME, vol);
+    }
+
+
+    /*
+		#############################
+		TODO: Gets Ball Popper Volume
+		#############################
+	*/
+    public static float GetBallPopperVolume() {
+        return PlayerPrefs.GetFloat(BALL_POP_VOLUME);
+    }
+
+    public static void SetBallPopperSFXVolume(float vol) {
+        if (vol < 0 || vol > 1) {
+            Debug.Log("player prefs manager cannot update SFX vol of " + vol);
+        } else {
+            PlayerPrefs.SetFloat(BALL_POP_SFX_VOLUME, vol);
+        }
+    }
+
+    public static float GetBallPopperSFXVolume() {
+        return PlayerPrefs.GetFloat(BALL_POP_SFX_VOLUME);
     }
 }

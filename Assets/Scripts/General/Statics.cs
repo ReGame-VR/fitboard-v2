@@ -6,7 +6,7 @@ namespace ReGameVR {
     namespace Fitboard {
         public static class Statics {
 
-            public enum Game { None, Paint, Mole, Roll, Move, Memoree, Car, Stop };
+            public enum Game { None, Paint, Mole, Roll, Move, Memoree, Car, Ball };
             public static Game currentGame;
             public static string prevScene;
             public static string nextScene;
@@ -30,6 +30,8 @@ namespace ReGameVR {
             private const string rollMenu = "Roll Main";
             private const string moveMenu = "Move Main";
             private const string moleMenu = "Mole Main";
+            private const string carMenu = "Car Main";
+            private const string ballMenu = "Ball Main";
             private const string memoreeMenu = "Memoree";
 
             // SAVE FILES
@@ -43,10 +45,10 @@ namespace ReGameVR {
             private static PatientModel currentPatient;
             private static TherapistModel currentUser;
             private static ReGameSession session;
-            private const int version = 2;
+            private static int version;
 
             // SAVE DATA
-            private static readonly string path = Application.persistentDataPath + "/";
+            private static readonly string path = Application.dataPath + "/";
 
 
             public static string Path {
@@ -182,11 +184,26 @@ namespace ReGameVR {
                 get {
                     return version;
                 }
+                set {
+                    version = value;
+                }
             }
 
             public static string PastScores {
                 get {
                     return pastScores;
+                }
+            }
+
+            public static string CarMenu {
+                get {
+                    return carMenu;
+                }
+            }
+
+            public static string BallMenu {
+                get {
+                    return ballMenu;
                 }
             }
         }

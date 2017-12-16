@@ -40,7 +40,7 @@ namespace ReGameVR.Fitboard {
                     case Statics.Game.Roll:
                         return "The goal of this game is to use the keys to move the ball forward, backward, left or right to catch the targets " +
                             "and avoid the obstacles.  Difficulty levels control the number of targets and obstacles.";
-                    case Statics.Game.Stop:
+                    case Statics.Game.Ball:
                         return "The goal of this game is to press the right colored key to stop the balls before they leave the screen.";
                     case Statics.Game.Car:
                         return "The goal of this game is to drive the car through the course without hitting any obstacles. You can use the keys to go faster, slower or turn right or left. You can choose difficulty levels and minimum and maximum speeds.";
@@ -68,7 +68,7 @@ namespace ReGameVR.Fitboard {
                         return "Memoree";
                     case Statics.Game.Roll:
                         return "Roll the Ball";
-                    case Statics.Game.Stop:
+                    case Statics.Game.Ball:
                         return "Stop the Ball";
                     case Statics.Game.Car:
                         return "Drive the Car";

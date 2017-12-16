@@ -64,7 +64,7 @@ namespace ReGameVR {
                                     return "Yellow";
                             }
                             break;
-                        case Statics.Game.Stop:
+                        case Statics.Game.Ball:
                             switch (keyType) {
                                 case 1:
                                     return "Red";
@@ -100,8 +100,20 @@ namespace ReGameVR {
                                     return "Left";
                             }
                             break;
+                        case Statics.Game.Move:
+                            switch (keyType) {
+                                case 1:
+                                    return "Key 1";
+                                case 2:
+                                    return "Key 2";
+                                case 3:
+                                    return "Key 3";
+                                case 4:
+                                    return "Key 4";
+                            }
+                            break;
                         default:
-                            Notification.instance.LogError("Guide Error:", "No current game found. Could not display proper guide button names.");
+                            Notification.instance.LogError("Guide Button Error:", "No names for current game found. Could not display proper guide button names.");
                             switch (keyType) {
                                 case 1:
                                     return "Key 1";
@@ -189,6 +201,22 @@ namespace ReGameVR {
                             break;
                         case Statics.Game.Move:
                             body = "In Make it Move, each key does something diffent based on the game mode.";
+                            break;
+                        case Statics.Game.Car:
+                            switch (keyType) {
+                                case 1:
+                                    body = "In Drive the Car, this key makes the car move faster.";
+                                    break;
+                                case 2:
+                                    body = "In Drive the Car, this key makes the car move slower.";
+                                    break;
+                                case 3:
+                                    body = "In Drive the Car, this key makes the car move right.";
+                                    break;
+                                case 4:
+                                    body = "In Drive the Car, this key makes the car move left";
+                                    break;
+                            }
                             break;
                         default:
                             return; // don't do anything

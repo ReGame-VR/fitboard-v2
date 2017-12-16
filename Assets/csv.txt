@@ -1,0 +1,9 @@
+Therapist,Patient,Difficulty,Points,Total Time,Memoree
+therapist1,110251487,2,0,60
+Therapist,Patient,Total Duration,Time Taken,Splashes,Max Splashes,Paint a Picture
+therapist1,110251487,6,6,0,36
+Therapist,Patient,Max Moles,Spawn Rate,Despawn Time,Moles Hit,Total Moles,Total Time,Whack-a-Mole
+therapist1,110251487,3,1,0,0,39,20
+therapist1,110251487,2,1,5,0,12,30
+therapist1,110251487,4,1,0,0,55,30
+therapist1,110251487,2,1,0,0,37,30

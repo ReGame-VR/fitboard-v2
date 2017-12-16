@@ -32,7 +32,7 @@ namespace ReGameVR.UI {
                 therapist.text = "No therapist found";
             }
 
-            List<ReGameSession> sessions = SaveManager.LoadAll(Application.dataPath);
+            List<ReGameSession> sessions = SaveManager.LoadAll(Statics.Path);
             Debug.Log("Session count: " + sessions.Count);
             SortedList<DateTime, GameResult> results = new SortedList<DateTime, GameResult>(new ReverseDateTimeComparer());
             foreach (ReGameSession session in sessions) {

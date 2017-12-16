@@ -101,8 +101,9 @@ public class LevelManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// Loads the FB Config, then the Paint Main Menu.
+    /// Loads the Paint main menu.
     /// </summary>
+    /// <param name="loadConfig"> If true, loads the FITBoard config scene first, then the main menu. </param>
     public void LoadPaintMenu(bool loadConfig) {
         Statics.currentGame = Statics.Game.Paint;
         if (loadConfig) {
@@ -113,8 +114,9 @@ public class LevelManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// Loads the FB Config, then the Paint Main Menu.
+    /// Loads the Memoree main menu.
     /// </summary>
+    /// <param name="loadConfig"> If true, loads the FITBoard config scene first, then the main menu. </param>
     public void LoadMemoreeMenu(bool loadConfig) {
         Statics.currentGame = Statics.Game.Memoree;
         if (loadConfig) {
@@ -125,8 +127,9 @@ public class LevelManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// Loads the FB Config, then the Roll Main Menu.
+    /// Loads the Roll main menu.
     /// </summary>
+    /// <param name="loadConfig"> If true, loads the FITBoard config scene first, then the main menu. </param>
     public void LoadRollMenu(bool loadConfig) {
         Statics.currentGame = Statics.Game.Roll;
         if (loadConfig) {
@@ -135,10 +138,10 @@ public class LevelManager : MonoBehaviour {
             LoadLevel(Statics.RollMenu);
         }
     }
-
     /// <summary>
-    /// Loads the FB Config, then the Move Main Menu.
+    /// Loads the Move main menu.
     /// </summary>
+    /// <param name="loadConfig"> If true, loads the FITBoard config scene first, then the main menu. </param>
     public void LoadMoveMenu(bool loadConfig) {
         Statics.currentGame = Statics.Game.Move;
         if (loadConfig) {
@@ -149,14 +152,41 @@ public class LevelManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// Loads the FB Config, then the Move Main Menu.
+    /// Loads the Mole main menu.
     /// </summary>
+    /// <param name="loadConfig"> If true, loads the FITBoard config scene first, then the main menu. </param>
     public void LoadMoleMenu(bool loadConfig) {
         Statics.currentGame = Statics.Game.Mole;
         if (loadConfig) {
             LoadFBConfigThenNext(Statics.MoleMenu);
         } else {
             LoadLevel(Statics.MoleMenu);
+        }
+    }
+
+    /// <summary>
+    /// Loads the Car main menu.
+    /// </summary>
+    /// <param name="loadConfig"> If true, loads the FITBoard config scene first, then the main menu. </param>
+    public void LoadCarMenu(bool loadConfig) {
+        Statics.currentGame = Statics.Game.Car;
+        if (loadConfig) {
+            LoadFBConfigThenNext(Statics.CarMenu);
+        } else {
+            LoadLevel(Statics.CarMenu);
+        }
+    }
+
+    /// <summary>
+    /// Loads the Ball main menu.
+    /// </summary>
+    /// <param name="loadConfig"> If true, loads the FITBoard config scene first, then the main menu. </param>
+    public void LoadBallMenu(bool loadConfig) {
+        Statics.currentGame = Statics.Game.Ball;
+        if (loadConfig) {
+            LoadFBConfigThenNext(Statics.BallMenu);
+        } else {
+            LoadLevel(Statics.BallMenu);
         }
     }
 
@@ -217,7 +247,10 @@ public class LevelManager : MonoBehaviour {
         if (Statics.CurrentUser.Equals(new TherapistModel("Guest"))) {
             return;
         } else {
-            SaveManager.Save(Statics.Session, Statics.Path);
+            ReGameSession s = Statics.Session;
+            s.Patient.Hash();
+            SaveManager.Save(s, Statics.Path);
+            Statics.Session = null;
         }
     }
 

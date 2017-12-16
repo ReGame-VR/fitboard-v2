@@ -19,5 +19,15 @@ namespace ReGameVR.Fitboard {
         public List<string> Data { get; set; }
         public List<int> Values { get; set; }
         public DateTime TimeStamp { get; set; }
+        public PatientModel Patient { get; set; }
+        public TherapistModel Therapist { get; set; }
+
+        public override string ToString() {
+            String result = "Game : " + GameName + System.Environment.NewLine + "Time : " + TimeStamp.ToLocalTime() + System.Environment.NewLine;
+            for (int i = 0; i < Data.Count; i++) {
+                result = result + Data[i] + " : " + Values[i].ToString() + System.Environment.NewLine;
+            }
+            return result; 
+        }
     }
 }

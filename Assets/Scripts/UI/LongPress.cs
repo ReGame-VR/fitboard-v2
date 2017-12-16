@@ -18,6 +18,7 @@ namespace ReGameVR.UI {
         private void Update() {
             if (isPointerDown && !longPressTriggered) {
                 if (Time.time - timePressStarted > durationThreshold) {
+                    Debug.Log("Long pressed");
                     longPressTriggered = true;
                     onLongPress.Invoke();
                 }

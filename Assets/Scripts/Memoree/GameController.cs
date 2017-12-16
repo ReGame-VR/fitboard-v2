@@ -85,7 +85,7 @@ namespace ReGameVR.Games.Memoree {
                 int seconds = ((int)time % 60);
 
                 // Handles game timeout
-                if (minutes == minLimit && seconds == secLimit) {
+                if (minutes >= minLimit && seconds >= secLimit) {
                     startGame = false;
                     endLight.SetActive(true);
                     oriLight.SetActive(false);
@@ -259,7 +259,7 @@ namespace ReGameVR.Games.Memoree {
 
         // Sets the difficulty of the game
         public void setDifficulty(int diff) {
-            minLimit = Minutes.value;
+            minLimit = Minutes.value + 1;
             secLimit = 0;
 
             difficulty = diff;

@@ -8,6 +8,10 @@ namespace ReGameVR.Fitboard {
         public static FitBoardHandler instance;
         private FitboardReader fb;
 
+        public GameObject handler;
+        public GameObject reader;
+        public GameObject serialController;
+
         private void Awake() {
             if (instance == null) {
                 DontDestroyOnLoad(this.gameObject);
@@ -16,6 +20,19 @@ namespace ReGameVR.Fitboard {
                 Destroy(gameObject);
             }
 
+        }
+
+        public void ActivateConnection() {
+            if (!serialController.activeInHierarchy) {
+                serialController.SetActive(true);
+            }
+            if (!reader.activeInHierarchy) {
+                reader.SetActive(true);
+            }
+            if (!handler.activeInHierarchy) {
+                handler.SetActive(true);
+            }
+            fb = reader.GetComponent<FitboardReader>();
         }
 
         // Use this for initialization

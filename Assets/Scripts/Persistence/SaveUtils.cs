@@ -42,6 +42,9 @@ namespace ReGameVR.Fitboard {
                     case Statics.Game.Car:
                         SaveCar();
                         break;
+                    default:
+                        ReGameVR.UI.Notification.instance.LogWarning("Error Saving:", "No save procedure found for the current game");
+                        break;
                 }
             }
         }
@@ -63,17 +66,15 @@ namespace ReGameVR.Fitboard {
         }
 
         private static void SavePaint() {
-            SaveTrial("Paint th",
+            SaveTrial("Paint a Picture",
                 new List<string>(
-                    new string[5] {
-                        "Trial #",
+                    new string[4] {
                         "Total Duration",
                         "Time Taken",
                         "Splashes",
                         "Max Splashes" }),
                 new List<int>(
-                    new int[5] {
-                        Painter.trialNumber,
+                    new int[4] {
                         (int)GameTimer.levelSeconds,
                         (int)GameTimer.timeTaken,
                         Painter.splashCount,
@@ -131,6 +132,8 @@ namespace ReGameVR.Fitboard {
             results.Data = data;
             results.Values = values;
             results.TimeStamp = DateTime.Now;
+            results.Patient = Statics.CurrentPatient;
+            results.Therapist = Statics.CurrentUser;
 
             Statics.Session.GameResults.Add(results);
         }

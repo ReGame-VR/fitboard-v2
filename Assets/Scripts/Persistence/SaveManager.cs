@@ -4,6 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System;
 using System.Text;
+using System.Collections;
 
 /*
  * SaveManager offers functionality for saving, loading and exporting 
@@ -109,10 +110,65 @@ namespace ReGameVR.Fitboard {
             return formattedString;
         }
 
+        public static string ExportCSV(string filePathRoot, string destinationPath) {
+            List<ReGameSession> savedSessions = SaveManager.LoadAll(filePathRoot);
+            Dictionary<string, List<GameResult>> results = new Dictionary<string, List<GameResult>>();
+       
+            // Separate game results by game
+            foreach (ReGameSession session in savedSessions) {
+                foreach (GameResult result in session.GameResults) {
+                    if (results.ContainsKey(result.GameName)) {
+                        results[result.GameName].Add(result);
+                    } else {
+                        List<GameResult> newList = new List<GameResult>();
+                        newList.Add(result);
+                        results.Add(result.GameName, newList);
+                    }
+                }
+            }
+
+            // This using block should handle auto opening and closing the StreamWriter
+            using (System.IO.StreamWriter outputFile = new System.IO.StreamWriter(destinationPath + ".csv")) {
+                foreach (List<GameResult> gameResults in results.Values) { // for each game
+                    for (int i = 0; i < gameResults.Count; i++) { // for each trial
+                        if (i == 0) { // if this is the first line of this game, add the column headers
+                            StringBuilder header = new StringBuilder();
+                            for (int x = 0; x < gameResults[0].Data.Count; x++) {
+                                if (x == 0) {
+                                    header.Append("Therapist,Patient");
+                                }
+                                header.Append(",");
+                                header.Append(gameResults[0].Data[x]);
+                            }
+                            header.Append(",");
+                            header.Append(gameResults[0].GameName);
+                            outputFile.WriteLine(header.ToString());
+                        }
+                        StringBuilder line = new StringBuilder();
+                        for (int j = 0; j < gameResults[i].Values.Count; j++) {
+                            if (j == 0) {
+                                line.Append(gameResults[i].Therapist.Name);
+                                line.Append(",");
+                                line.Append(gameResults[i].Patient.Name);
+                            }
+                            line.Append(",");
+                            line.Append(gameResults[i].Values[j]);
+                        }
+                        outputFile.WriteLine(line.ToString());
+                    }
+                }
+            }
+
+            return destinationPath + EXPORT_TXT_EXTENSION;
+        }
+
+        // THIS IS BROKEN
+        // Because Unity's JSON serialization utilities are bad and can't serialize lists properly.
+        // If JSON serialization is desired, someone must implement this method themselves using custom JSON serialization.
         public static string ExportAllWithJsonFormat(string filePathRoot, string destinationPath) {
             // fetch and deserialize .rgs save data contained in the specified directory 
             List<ReGameSession> savedSessions = SaveManager.LoadAll(filePathRoot);
-
+            List dataContainer = new List(savedSessions);
             // Append the ".txt" extension if we need to 
             string exportFileName = destinationPath +
                     (destinationPath.EndsWith(EXPORT_TXT_EXTENSION) ? EXPORT_TXT_EXTENSION : String.Empty);
@@ -130,8 +186,9 @@ namespace ReGameVR.Fitboard {
 
             // NEW IMPLEMENTATION -- uses Unity's JsonUtility class
 
-            string json = JsonUtility.ToJson(savedSessions);
-
+            string json = JsonUtility.ToJson(dataContainer);
+            Debug.Log("Sessions: " + dataContainer);
+           
             // We need to convert our string to a byte array to write to our file stream 
             byte[] byteData = new UTF8Encoding(true).GetBytes(json);
 

@@ -17,6 +17,8 @@ namespace ReGameVR.Fitboard {
             if (type.value == 0) {
                 dest = SaveManager.ExportAll(Statics.Path, Statics.Path + fileName.text);
             } else if (type.value == 1) {
+                dest = SaveManager.ExportCSV(Statics.Path, Statics.Path + fileName.text);
+            } else if (type.value == 2) {
                 dest = SaveManager.ExportAllWithJsonFormat(Statics.Path, Statics.Path + fileName.text);
             } else {
                 Notification.instance.LogWarning("Invalid file type given.", "File type value: " + type.value);

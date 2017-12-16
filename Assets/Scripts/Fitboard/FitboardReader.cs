@@ -20,7 +20,7 @@ public class FitboardReader : MonoBehaviour, IOKeyInterface
 
     // Initialization
     void Start() {
-        serialController = GameObject.Find("SerialController").GetComponent<SerialController>();
+        serialController = GameObject.FindObjectOfType<SerialController>();
         InitReadStorage();
     }
 

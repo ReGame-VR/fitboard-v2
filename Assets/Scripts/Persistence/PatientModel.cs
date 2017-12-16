@@ -4,14 +4,16 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace ReGameVR.Fitboard {
     [System.Serializable]
     public class PatientModel {
-        public readonly string Name;
-
-        public PatientModel(string name) {
-            this.Name = name;
+        private string name;
+        
+        public string Name {
+            get {
+                return name;
+            }
         }
 
-        public PatientModel(PatientModel patientModel) {
-            this.Name = Mathf.Abs(patientModel.Name.GetHashCode()).ToString();
+        public PatientModel(string name) {
+            this.name = name;
         }
 
         // Either this the names are the same or one of the names' hashcodes matches the other's name
@@ -21,6 +23,10 @@ namespace ReGameVR.Fitboard {
             return this.Name.Equals(other.Name) 
                 || Mathf.Abs(this.Name.GetHashCode()).ToString().Equals(this.Name)
                 || this.Name.Equals(Mathf.Abs(other.Name.GetHashCode()).ToString());
+        }
+
+        public void Hash() {
+            this.name = Mathf.Abs(this.Name.GetHashCode()).ToString();
         }
     }
 }
