@@ -218,6 +218,22 @@ namespace ReGameVR {
                                     break;
                             }
                             break;
+                        case Statics.Game.Ball:
+                            switch (keyType) {
+                                case 1:
+                                    body = "In Stop the Ball, this key will pop a red ball.";
+                                    break;
+                                case 2:
+                                    body = "In Stop the Ball, this key will pop a blue ball.";
+                                    break;
+                                case 3:
+                                    body = "In Stop the Ball, this key will pop a green ball.";
+                                    break;
+                                case 4:
+                                    body = "In Stop the Ball, this key will pop a yellow ball.";
+                                    break;
+                            }
+                            break;
                         default:
                             return; // don't do anything
                     }

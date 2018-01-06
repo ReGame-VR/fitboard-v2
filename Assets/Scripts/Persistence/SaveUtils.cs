@@ -42,11 +42,30 @@ namespace ReGameVR.Fitboard {
                     case Statics.Game.Car:
                         SaveCar();
                         break;
+                    case Statics.Game.Ball:
+                        SaveBall();
+                        break;
                     default:
                         ReGameVR.UI.Notification.instance.LogWarning("Error Saving:", "No save procedure found for the current game");
                         break;
                 }
             }
+        }
+
+        private static void SaveBall() {
+            SaveTrial("Stop the Ball",
+                new List<string>(
+                    new string[4] {
+                        "Difficulty",
+                        "Time Limit",
+                        "Score",
+                        "Total Ball Count"}),
+                new List<int>(
+                    new int[4] {
+                        BallGod.difficulty,
+                        BallGod.timeLimit,
+                        BallGod.score,
+                        BallGod.ballNum}));
         }
 
         private static void SaveMove() {

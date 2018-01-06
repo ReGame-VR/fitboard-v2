@@ -11,7 +11,7 @@ namespace ReGameVR {
             public static bool isPlaying;
 
             [SerializeField]
-            private AudioClip[] paint, mole, main, memoree, roll, move, car;
+            private AudioClip[] paint, mole, main, memoree, roll, move, car, ball;
 
             void Awake() {
                 if (instance != null) {

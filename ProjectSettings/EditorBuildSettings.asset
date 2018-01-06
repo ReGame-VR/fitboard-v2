@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/_Config Scene/Config Scene.unity
     guid: 3426afbb6298dcb47a6861b6dabcbb6b
   - enabled: 1
+    path: Assets/_Game Scenes/Ball/Ball Main.unity
+    guid: 64f5258184ce37044afd331342a31cf6
+  - enabled: 1
     path: Assets/_Game Scenes/Paint/Paint Main.unity
     guid: 5967ac7be03f508489fa178e2a7b68aa
   - enabled: 1
@@ -74,12 +77,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Game Scenes/Move/Move Main.unity
     guid: 298a5d269b2c60d41946b0dd7e8354d9
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Game Scenes/Car/Car Main.unity
     guid: 7c63719a2e7ef6c458c3b1fd7e0ab52f
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Game Scenes/Car/Car Game.unity
     guid: c449294d20702994d86925e643a1bf02
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000

@@ -74,7 +74,11 @@ namespace ReGameVR.Games.Move {
             SaveUtils.SaveTrial();
 
             // Loads next level at the end of the audio clip
-            Invoke("LoadNextLevel", audioSource.clip.length);
+            if (audioSource.clip != null) {
+                Invoke("LoadNextLevel", audioSource.clip.length);
+            } else {
+                LoadNextLevel();
+            }
         }
 
         void LoadNextLevel() {

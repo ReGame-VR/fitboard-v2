@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 5b5f98d8625b93341a79f3d543e07839
+timeCreated: 1510187769
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Brainfish Rush_PersonalUseOnly
+  fontNames:
+  - Brainfish Rush_PersonalUseOnly
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

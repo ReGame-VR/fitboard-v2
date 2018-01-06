@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 8d5dd1f3026c6e742a72dc50646ce7cd
+timeCreated: 1512348717
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: FT Blockbusta
+  fontNames:
+  - FT Blockbusta
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

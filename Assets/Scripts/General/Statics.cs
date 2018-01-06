@@ -46,6 +46,7 @@ namespace ReGameVR {
             private static TherapistModel currentUser;
             private static ReGameSession session;
             private static int version;
+            private const bool isDevBuild = false;
 
             // SAVE DATA
             private static readonly string path = Application.dataPath + "/";
@@ -204,6 +205,12 @@ namespace ReGameVR {
             public static string BallMenu {
                 get {
                     return ballMenu;
+                }
+            }
+
+            public static bool IsDevBuild {
+                get {
+                    return isDevBuild;
                 }
             }
         }

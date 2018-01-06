@@ -6,22 +6,15 @@ using UnityEngine.UI;
 namespace ReGameVR.Games.Car {
     public class CarOptionsKiller : MonoBehaviour {
 
-        Slider difficulty;
-        Slider minSpeed;
-        Slider maxSpeed;
-        Slider laneChange;
-        Slider sfxVolume;
+        public Slider difficulty;
+        public Slider minSpeed;
+        public Slider maxSpeed;
+        public Slider laneChange;
+        public Slider sfxVolume;
 
         History history;
 
         void Start() {
-
-            difficulty = GameObject.Find("Difficulty Slider").GetComponent<Slider>();
-            minSpeed = GameObject.Find("Min Car Speed Slider").GetComponent<Slider>();
-            maxSpeed = GameObject.Find("Max Car Speed Slider").GetComponent<Slider>();
-            laneChange = GameObject.Find("Lane Change Speed").GetComponent<Slider>();
-            sfxVolume = GameObject.Find("SFX Volume Slider").GetComponent<Slider>();
-
             difficulty.value = PlayerPrefsManager.getCarDifficulty();
             minSpeed.value = PlayerPrefsManager.GetCarMinSpeed();
             maxSpeed.value = PlayerPrefsManager.GetCarMaxSpeed();
@@ -33,8 +26,7 @@ namespace ReGameVR.Games.Car {
 
 
 
-        public void killOptionsCanvas() {
-            GameObject c = GameObject.Find("Options Canvas(Clone)");
+        public void SaveOptions() {
             history.updateCarMinSpeed(minSpeed.value);
             history.updateCarMaxSpeed(maxSpeed.value);
             history.updateLaneChangeSpeed(laneChange.value);
@@ -46,7 +38,8 @@ namespace ReGameVR.Games.Car {
             PlayerPrefsManager.SetCarMaxSpeed(maxSpeed.value);
             PlayerPrefsManager.SetCarLaneChangeSpeed(laneChange.value);
             PlayerPrefsManager.setSFXVolume(sfxVolume.value);
-            Destroy(c);
+
+
         }
     }
 }

@@ -3122,6 +3122,16 @@ Prefab:
     m_Modifications:
     - target: {fileID: 114552003559000520, guid: 0d5f3bc9679213a4599415989f8fc17a,
         type: 2}
+      propertyPath: car.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114552003559000520, guid: 0d5f3bc9679213a4599415989f8fc17a,
+        type: 2}
+      propertyPath: ball.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114552003559000520, guid: 0d5f3bc9679213a4599415989f8fc17a,
+        type: 2}
       propertyPath: memoree.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -3367,6 +3377,16 @@ Prefab:
       propertyPath: m_Volume
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114552003559000520, guid: 0d5f3bc9679213a4599415989f8fc17a,
+        type: 2}
+      propertyPath: car.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3c0e1aac7c8bbe948824b5936be1663b, type: 3}
+    - target: {fileID: 114552003559000520, guid: 0d5f3bc9679213a4599415989f8fc17a,
+        type: 2}
+      propertyPath: ball.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: eb1f211edf74e7d44a60dc593906e82d, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0d5f3bc9679213a4599415989f8fc17a, type: 2}
   m_IsPrefabParent: 0
